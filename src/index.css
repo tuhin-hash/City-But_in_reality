@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500;600&display=swap');
+
+@import "tailwindcss";
+
+:root {
+  --bg: #101210;
+  --surface: #181B18;
+  --elevated: #202420;
+  --text-primary: #F1F0E8;
+  --text-secondary: #969B92;
+  --lime: #C6FF54;
+  --orange: #FF8B45;
+  --coral: #FF5E5E;
+  --blue: #79B8FF;
+  --road: #333832;
+  --border: #2A2E2A;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--road);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* Grid texture overlay */
+.grid-texture {
+  background-image:
+    linear-gradient(rgba(42,46,42,0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(42,46,42,0.3) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Blueprint texture */
+.blueprint-texture {
+  background-image:
+    linear-gradient(rgba(121,184,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(121,184,255,0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Animated scanning line */
+@keyframes scan {
+  0% { transform: translateY(-100%); opacity: 0; }
+  50% { opacity: 0.4; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+.scan-line {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--lime), transparent);
+  animation: scan 6s linear infinite;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Pulse animation */
+@keyframes pulse-lime {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(198,255,84,0.4); }
+  50% { box-shadow: 0 0 0 6px rgba(198,255,84,0); }
+}
+.pulse-lime { animation: pulse-lime 2s infinite; }
+
+/* Text selection */
+::selection {
+  background: rgba(198,255,84,0.2);
+  color: var(--text-primary);
+}
